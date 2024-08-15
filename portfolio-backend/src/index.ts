@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
-import { connectToDB } from "./services/dbService";
+import { closeDBConnection, connectToDB } from "./services/dbService";
 
 dotenv.config();
 
@@ -16,6 +16,16 @@ connectToDB()
 		app.listen(port, () => {
 			console.log(`Server running on port ${port}`);
 		});
+
+		const shutdown = async () => {
+			console.log("Closing server...");
+			await closeDBConnection();
+			process.exit(0);
+		};
+
+		process.on("SIGINT", shutdown);
+		process.on("SIGTERM", shutdown);
+		process.on("SIGQUIT", shutdown);
 	})
 	.catch((error) => {
 		console.error("Error connecting to MongoDB");

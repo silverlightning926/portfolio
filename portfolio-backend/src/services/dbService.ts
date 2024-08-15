@@ -22,4 +22,13 @@ async function connectToDB(): Promise<void> {
 	}
 }
 
-export { connectToDB };
+async function closeDBConnection(): Promise<void> {
+	try {
+		await MONGO_CLIENT.close();
+		console.log("Closed MongoDB connection");
+	} catch (error) {
+		console.error("Error closing MongoDB connection:", error);
+	}
+}
+
+export { closeDBConnection, connectToDB };
