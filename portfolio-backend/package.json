@@ -1,0 +1,25 @@
+{
+	"name": "portfolio-backend",
+	"version": "1.0.0",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
+		"start": "ts-node src/index.ts",
+		"build": "tsc",
+		"serve": "node dist/index.js"
+	},
+	"author": "Sidd Rao",
+	"license": "MIT",
+	"description": "",
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"@types/node": "^22.3.0",
+		"nodemon": "^3.1.4",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2"
+	}
+}
