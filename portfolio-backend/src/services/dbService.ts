@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { ContactInfo } from "../models/contactInfo";
+import { Skills } from "../models/skills";
 
 dotenv.config();
 
@@ -61,10 +62,10 @@ async function getContactInfo(): Promise<ContactInfo | null> {
 	}
 }
 
-async function getSkills() {
+async function getSkills(): Promise<Skills[] | null> {
 	try {
 		return COLLECTIONS.skills
-			.find({}, { projection: { _id: 0 } })
+			.find<Skills>({}, { projection: { _id: 0 } })
 			.toArray();
 	} catch (error) {
 		console.error("Error getting skills: ", error);

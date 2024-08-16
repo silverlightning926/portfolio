@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import { uptime } from "process";
 import { ContactInfo } from "./models/contactInfo";
+import { Skills } from "./models/skills";
 import {
 	closeDBConnection,
 	connectToDB,
@@ -47,7 +48,7 @@ app.get("/contact", async (req: Request, res: Response) => {
 });
 
 app.get("/skills", async (req: Request, res: Response) => {
-	const skills = await getSkills();
+	const skills: Skills[] | null = await getSkills();
 
 	if (!skills) res.status(500).json({ error: "Internal server error" });
 
