@@ -10,6 +10,22 @@ import {
 
 dotenv.config();
 
+connectToDB()
+	.then(() => {
+		const shutdown = async () => {
+			console.log("Closing server...");
+			await closeDBConnection();
+			process.exit(0);
+		};
+
+		process.on("SIGINT", shutdown);
+		process.on("SIGTERM", shutdown);
+		process.on("SIGQUIT", shutdown);
+	})
+	.catch((_) => {
+		console.error("Error connecting to MongoDB");
+	});
+
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
@@ -31,22 +47,6 @@ app.get("/contact", async (req: Request, res: Response) => {
 	res.status(200).json(contact);
 });
 
-connectToDB()
-	.then(() => {
-		app.listen(port, () => {
-			console.log(`Server running on port ${port}`);
-		});
-
-		const shutdown = async () => {
-			console.log("Closing server...");
-			await closeDBConnection();
-			process.exit(0);
-		};
-
-		process.on("SIGINT", shutdown);
-		process.on("SIGTERM", shutdown);
-		process.on("SIGQUIT", shutdown);
-	})
-	.catch((_) => {
-		console.error("Error connecting to MongoDB");
-	});
+app.listen(port, () => {
+	console.log(`Server running on port ${port}`);
+});
