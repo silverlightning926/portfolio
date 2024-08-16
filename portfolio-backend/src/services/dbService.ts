@@ -1,7 +1,19 @@
 import dotenv from "dotenv";
 import { MongoClient, ServerApiVersion } from "mongodb";
+import { ContactInfo } from "../models/contactInfo";
 
 dotenv.config();
+
+async function checkEnvironment() {
+	if (!process.env.MONGO_URI) throw new Error("MONGO_URI is not defined");
+	if (!process.env.DB_NAME) throw new Error("DB_NAME is not defined");
+	if (!process.env.CONTACT_COLLECTION_NAME)
+		throw new Error("CONTACT_COLLECTION_NAME is not defined");
+
+	console.log("All DB environment variables found");
+}
+
+checkEnvironment();
 
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017";
 
@@ -31,4 +43,10 @@ async function closeDBConnection(): Promise<void> {
 	}
 }
 
-export { closeDBConnection, connectToDB };
+async function getContactInfo(): Promise<ContactInfo | null> {
+	const db = MONGO_CLIENT.db(process.env.DB_NAME!);
+	const collection = db.collection(process.env.CONTACT_COLLECTION_NAME!);
+	return collection.findOne<ContactInfo>({}, { projection: { _id: 0 } });
+}
+
+export { closeDBConnection, connectToDB, getContactInfo };

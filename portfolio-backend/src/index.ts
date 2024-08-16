@@ -1,7 +1,12 @@
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import { uptime } from "process";
-import { closeDBConnection, connectToDB } from "./services/dbService";
+import { ContactInfo } from "./models/contactInfo";
+import {
+	closeDBConnection,
+	connectToDB,
+	getContactInfo,
+} from "./services/dbService";
 
 dotenv.config();
 
@@ -14,6 +19,16 @@ app.get("/status", (req: Request, res: Response) => {
 		uptime: uptime(),
 		environment: process.env.ENVIRONMENT,
 	});
+});
+
+app.get("/contact", async (req: Request, res: Response) => {
+	const contact: ContactInfo | null = await getContactInfo();
+
+	if (!contact) {
+		res.status(500).json({ error: "Internal server error" });
+	}
+
+	res.status(200).json(contact);
 });
 
 connectToDB()
