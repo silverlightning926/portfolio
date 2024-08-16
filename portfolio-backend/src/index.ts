@@ -47,6 +47,6 @@ connectToDB()
 		process.on("SIGTERM", shutdown);
 		process.on("SIGQUIT", shutdown);
 	})
-	.catch((error) => {
+	.catch((_) => {
 		console.error("Error connecting to MongoDB");
 	});
