@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { ContactInfo } from "../models/contactInfo";
+import { Experience } from "../models/experience";
 import { Skills } from "../models/skills";
 
 dotenv.config();
@@ -11,7 +12,9 @@ async function checkEnvironment() {
 	if (!process.env.CONTACT_COLLECTION_NAME)
 		throw new Error("CONTACT_COLLECTION_NAME is not defined");
 	if (!process.env.SKILLS_COLLECTION_NAME)
-		console.log("All DB environment variables found");
+		throw new Error("SKILLS_COLLECTION_NAME is not defined");
+	if (!process.env.EXPERIENCE_COLLECTION_NAME)
+		throw new Error("EXPERIENCE_COLLECTION_NAME is not defined");
 }
 
 checkEnvironment();
@@ -30,6 +33,7 @@ const DB = MONGO_CLIENT.db(process.env.DB_NAME!);
 const COLLECTIONS = {
 	contact: DB.collection(process.env.CONTACT_COLLECTION_NAME!),
 	skills: DB.collection(process.env.SKILLS_COLLECTION_NAME!),
+	experience: DB.collection(process.env.EXPERIENCE_COLLECTION_NAME!),
 };
 
 async function connectToDB(): Promise<void> {
@@ -73,4 +77,21 @@ async function getSkills(): Promise<Skills[] | null> {
 	}
 }
 
-export { closeDBConnection, connectToDB, getContactInfo, getSkills };
+async function getExperience(): Promise<Experience[] | null> {
+	try {
+		return COLLECTIONS.experience
+			.find<Experience>({}, { projection: { _id: 0 } })
+			.toArray();
+	} catch (error) {
+		console.error("Error getting experience: ", error);
+		return null;
+	}
+}
+
+export {
+	closeDBConnection,
+	connectToDB,
+	getContactInfo,
+	getExperience,
+	getSkills,
+};
