@@ -9,8 +9,8 @@ async function checkEnvironment() {
 	if (!process.env.DB_NAME) throw new Error("DB_NAME is not defined");
 	if (!process.env.CONTACT_COLLECTION_NAME)
 		throw new Error("CONTACT_COLLECTION_NAME is not defined");
-
-	console.log("All DB environment variables found");
+	if (!process.env.SKILLS_COLLECTION_NAME)
+		console.log("All DB environment variables found");
 }
 
 checkEnvironment();
@@ -24,6 +24,12 @@ const MONGO_CLIENT = new MongoClient(MONGO_URI, {
 		deprecationErrors: true,
 	},
 });
+
+const DB = MONGO_CLIENT.db(process.env.DB_NAME!);
+const COLLECTIONS = {
+	contact: DB.collection(process.env.CONTACT_COLLECTION_NAME!),
+	skills: DB.collection(process.env.SKILLS_COLLECTION_NAME!),
+};
 
 async function connectToDB(): Promise<void> {
 	try {
@@ -45,13 +51,25 @@ async function closeDBConnection(): Promise<void> {
 
 async function getContactInfo(): Promise<ContactInfo | null> {
 	try {
-		const db = MONGO_CLIENT.db(process.env.DB_NAME!);
-		const collection = db.collection(process.env.CONTACT_COLLECTION_NAME!);
-		return collection.findOne<ContactInfo>({}, { projection: { _id: 0 } });
+		return COLLECTIONS.contact.findOne<ContactInfo>(
+			{},
+			{ projection: { _id: 0 } }
+		);
 	} catch (error) {
 		console.error("Error getting contact info:", error);
 		return null;
 	}
 }
 
-export { closeDBConnection, connectToDB, getContactInfo };
+async function getSkills() {
+	try {
+		return COLLECTIONS.skills
+			.find({}, { projection: { _id: 0 } })
+			.toArray();
+	} catch (error) {
+		console.error("Error getting skills: ", error);
+		return null;
+	}
+}
+
+export { closeDBConnection, connectToDB, getContactInfo, getSkills };

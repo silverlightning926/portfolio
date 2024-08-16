@@ -6,6 +6,7 @@ import {
 	closeDBConnection,
 	connectToDB,
 	getContactInfo,
+	getSkills,
 } from "./services/dbService";
 
 dotenv.config();
@@ -40,11 +41,17 @@ app.get("/status", (req: Request, res: Response) => {
 app.get("/contact", async (req: Request, res: Response) => {
 	const contact: ContactInfo | null = await getContactInfo();
 
-	if (!contact) {
-		res.status(500).json({ error: "Internal server error" });
-	}
+	if (!contact) res.status(500).json({ error: "Internal server error" });
 
 	res.status(200).json(contact);
+});
+
+app.get("/skills", async (req: Request, res: Response) => {
+	const skills = await getSkills();
+
+	if (!skills) res.status(500).json({ error: "Internal server error" });
+
+	res.status(200).json(skills);
 });
 
 app.get("*", (req: Request, res: Response) => {
