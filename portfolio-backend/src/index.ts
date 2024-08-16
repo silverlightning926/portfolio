@@ -47,6 +47,10 @@ app.get("/contact", async (req: Request, res: Response) => {
 	res.status(200).json(contact);
 });
 
+app.get("*", (req: Request, res: Response) => {
+	res.status(404).json({ error: "Endpoint not found" });
+});
+
 app.listen(port, () => {
 	console.log(`Server running on port ${port}`);
 });
