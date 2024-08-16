@@ -31,6 +31,10 @@ connectToDB()
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
+app.get("*", (req: Request, res: Response) => {
+	res.status(404).json({ error: "Endpoint not found" });
+});
+
 app.get("/status", (req: Request, res: Response) => {
 	res.status(200).json({
 		status: "OK",
@@ -53,10 +57,6 @@ app.get("/skills", async (req: Request, res: Response) => {
 	if (!skills) res.status(500).json({ error: "Internal server error" });
 
 	res.status(200).json(skills);
-});
-
-app.get("*", (req: Request, res: Response) => {
-	res.status(404).json({ error: "Endpoint not found" });
 });
 
 app.listen(port, () => {
