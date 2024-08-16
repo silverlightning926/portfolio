@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
+import { uptime } from "process";
 import { closeDBConnection, connectToDB } from "./services/dbService";
 
 dotenv.config();
@@ -7,8 +8,12 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req: Request, res: Response) => {
-	res.send("Hello World!");
+app.get("/status", (req: Request, res: Response) => {
+	res.status(200).json({
+		status: "OK",
+		uptime: uptime(),
+		environment: process.env.ENVIRONMENT,
+	});
 });
 
 connectToDB()
