@@ -2,12 +2,14 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import { uptime } from "process";
 import { ContactInfo } from "./models/contactInfo";
+import { Education } from "./models/education";
 import { Experience } from "./models/experience";
 import { Skills } from "./models/skills";
 import {
 	closeDBConnection,
 	connectToDB,
 	getContactInfo,
+	getEducation,
 	getExperience,
 	getSkills,
 } from "./services/dbService";
@@ -59,6 +61,14 @@ app.get("/skills", async (req: Request, res: Response) => {
 
 app.get("/experience", async (req: Request, res: Response) => {
 	const experience: Experience[] | null = await getExperience();
+
+	if (!experience) res.status(500).json({ error: "Internal server error" });
+
+	res.status(200).json(experience);
+});
+
+app.get("/education", async (req: Request, res: Response) => {
+	const experience: Education[] | null = await getEducation();
 
 	if (!experience) res.status(500).json({ error: "Internal server error" });
 

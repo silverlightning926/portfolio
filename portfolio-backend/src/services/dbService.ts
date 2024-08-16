@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { ContactInfo } from "../models/contactInfo";
+import { Education } from "../models/education";
 import { Experience } from "../models/experience";
 import { Skills } from "../models/skills";
 
@@ -15,6 +16,8 @@ async function checkEnvironment() {
 		throw new Error("SKILLS_COLLECTION_NAME is not defined");
 	if (!process.env.EXPERIENCE_COLLECTION_NAME)
 		throw new Error("EXPERIENCE_COLLECTION_NAME is not defined");
+	if (!process.env.EDUCATION_COLLECTION_NAME)
+		throw new Error("EDUCATION COLLECTION NAME is not defined");
 }
 
 checkEnvironment();
@@ -34,6 +37,7 @@ const COLLECTIONS = {
 	contact: DB.collection(process.env.CONTACT_COLLECTION_NAME!),
 	skills: DB.collection(process.env.SKILLS_COLLECTION_NAME!),
 	experience: DB.collection(process.env.EXPERIENCE_COLLECTION_NAME!),
+	education: DB.collection(process.env.EDUCATION_COLLECTION_NAME!),
 };
 
 async function connectToDB(): Promise<void> {
@@ -88,10 +92,22 @@ async function getExperience(): Promise<Experience[] | null> {
 	}
 }
 
+async function getEducation(): Promise<Education[] | null> {
+	try {
+		return COLLECTIONS.education
+			.find<Education>({}, { projection: { _id: 0 } })
+			.toArray();
+	} catch (error) {
+		console.error("Error getting experience: ", error);
+		return null;
+	}
+}
+
 export {
 	closeDBConnection,
 	connectToDB,
 	getContactInfo,
+	getEducation,
 	getExperience,
 	getSkills,
 };
