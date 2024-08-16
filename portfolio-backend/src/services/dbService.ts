@@ -44,9 +44,14 @@ async function closeDBConnection(): Promise<void> {
 }
 
 async function getContactInfo(): Promise<ContactInfo | null> {
-	const db = MONGO_CLIENT.db(process.env.DB_NAME!);
-	const collection = db.collection(process.env.CONTACT_COLLECTION_NAME!);
-	return collection.findOne<ContactInfo>({}, { projection: { _id: 0 } });
+	try {
+		const db = MONGO_CLIENT.db(process.env.DB_NAME!);
+		const collection = db.collection(process.env.CONTACT_COLLECTION_NAME!);
+		return collection.findOne<ContactInfo>({}, { projection: { _id: 0 } });
+	} catch (error) {
+		console.error("Error getting contact info:", error);
+		return null;
+	}
 }
 
 export { closeDBConnection, connectToDB, getContactInfo };
