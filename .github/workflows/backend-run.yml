@@ -3,7 +3,7 @@ name: Backend | Run (ts-node)
 on: [push, pull_request]
 
 jobs:
-  formatting-check:
+  run:
     runs-on: ubuntu-latest
 
     steps:

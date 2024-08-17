@@ -3,7 +3,7 @@ name: Backend | Build and Run (tsc)
 on: [push, pull_request]
 
 jobs:
-  formatting-check:
+  build-and-run:
     runs-on: ubuntu-latest
 
     steps:
