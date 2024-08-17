@@ -17,11 +17,11 @@ jobs:
       - name: Setup Secrets
         run: echo ${{ secrets.MONGO_URI }} > ./secrets/mongo-uri.txt
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+      - name: Docker Setup Buildx
+        uses: docker/setup-buildx-action@v3.6.1
 
       - name: Setup QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v3.2.0
 
       - name: Build Docker image
         run: docker build --file ./portfolio-backend/Dockerfile --tag ${{ github.actor }}/portfolio-backend:latest ./portfolio-backend
