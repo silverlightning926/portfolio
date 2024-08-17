@@ -39,7 +39,7 @@ app.get("/status", (req: Request, res: Response) => {
 	res.status(200).json({
 		status: "OK",
 		uptime: uptime(),
-		environment: process.env.ENVIRONMENT,
+		environment: process.env.NODE_ENV,
 	});
 });
 
