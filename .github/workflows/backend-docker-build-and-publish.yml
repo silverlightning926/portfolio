@@ -26,6 +26,6 @@ jobs:
         uses: docker/setup-qemu-action@v3.2.0
 
       - name: Build Docker image
-        run: docker build --file ./portfolio-backend/Dockerfile --tag ${{ github.actor }}/portfolio-backend:latest ./portfolio-backend
+        run: docker build --file ./backend/Dockerfile --tag ${{ github.actor }}/backend:latest ./backend
 
       # TODO: Login And Push Docker Image
