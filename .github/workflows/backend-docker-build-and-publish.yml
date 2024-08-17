@@ -1,31 +1,31 @@
 name: Backend | Build and Publish Docker Image
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
 
 jobs:
-  build-and-publish:
-    runs-on: ubuntu-latest
+    build-and-publish:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4.1.7
 
-      - name: Setup Secrets
-        run: |
-          mkdir -p ./secrets 
-          echo ${{ secrets.MONGO_URI }} > ./secrets/mongo-uri.txt
+            - name: Setup Secrets
+              run: |
+                  mkdir -p ./secrets 
+                  echo ${{ secrets.MONGO_URI }} > ./secrets/mongo-uri.txt
 
-      - name: Docker Setup Buildx
-        uses: docker/setup-buildx-action@v3.6.1
+            - name: Docker Setup Buildx
+              uses: docker/setup-buildx-action@v3.6.1
 
-      - name: Setup QEMU
-        uses: docker/setup-qemu-action@v3.2.0
+            - name: Setup QEMU
+              uses: docker/setup-qemu-action@v3.2.0
 
-      - name: Build Docker image
-        run: docker build --file ./backend/Dockerfile --tag ${{ github.actor }}/backend:latest ./backend
+            - name: Build Docker image
+              run: docker build --file ./backend/Dockerfile --tag ${{ github.actor }}/backend:latest ./backend
 
-      # TODO: Login And Push Docker Image
+            # TODO: Login And Push Docker Image

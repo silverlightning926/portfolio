@@ -3,31 +3,31 @@ name: Backend | Build and Run (tsc)
 on: [push, pull_request]
 
 jobs:
-  build-and-run:
-    runs-on: ubuntu-latest
+    build-and-run:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4.1.7
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+            - name: Set up Node.js
+              uses: actions/setup-node@v4.0.3
+              with:
+                  node-version: 20
 
-      - name: Install dependencies
-        working-directory: ./backend
-        run: npm install
+            - name: Install dependencies
+              working-directory: ./backend
+              run: npm install
 
-      - name: Build the project using tsc
-        working-directory: ./backend
-        run: npm run build
+            - name: Build the project using tsc
+              working-directory: ./backend
+              run: npm run build
 
-      - name: Run the project
-        working-directory: ./backend
-        env:
-          PORT: 3000
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-        run: |
-          nohup npm run serve &
-          sleep 3
+            - name: Run the project
+              working-directory: ./backend
+              env:
+                  PORT: 3000
+                  MONGO_URI: ${{ secrets.MONGO_URI }}
+              run: |
+                  nohup npm run serve &
+                  sleep 3
