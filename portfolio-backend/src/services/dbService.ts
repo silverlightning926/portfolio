@@ -3,6 +3,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 import { ContactInfo } from "../models/contactInfo";
 import { Education } from "../models/education";
 import { Experience } from "../models/experience";
+import { Project } from "../models/projects";
 import { Skills } from "../models/skills";
 
 dotenv.config();
@@ -16,8 +17,12 @@ async function checkEnvironment() {
 		throw new Error("SKILLS_COLLECTION_NAME is not defined");
 	if (!process.env.EXPERIENCE_COLLECTION_NAME)
 		throw new Error("EXPERIENCE_COLLECTION_NAME is not defined");
+	if (!process.env.PROJECTS_COLLECTION_NAME)
+		throw new Error("PROJECTS COLLECTION NAME is not defined");
 	if (!process.env.EDUCATION_COLLECTION_NAME)
 		throw new Error("EDUCATION COLLECTION NAME is not defined");
+
+	console.log("Environment variables are set correctly");
 }
 
 checkEnvironment();
@@ -37,6 +42,7 @@ const COLLECTIONS = {
 	contact: DB.collection(process.env.CONTACT_COLLECTION_NAME!),
 	skills: DB.collection(process.env.SKILLS_COLLECTION_NAME!),
 	experience: DB.collection(process.env.EXPERIENCE_COLLECTION_NAME!),
+	projects: DB.collection(process.env.PROJECTS_COLLECTION_NAME!),
 	education: DB.collection(process.env.EDUCATION_COLLECTION_NAME!),
 };
 
@@ -92,6 +98,17 @@ async function getExperience(): Promise<Experience[] | null> {
 	}
 }
 
+async function getProjects(): Promise<Project[] | null> {
+	try {
+		return COLLECTIONS.projects
+			.find<Project>({}, { projection: { _id: 0 } })
+			.toArray();
+	} catch (error) {
+		console.error("Error getting projects: ", error);
+		return null;
+	}
+}
+
 async function getEducation(): Promise<Education[] | null> {
 	try {
 		return COLLECTIONS.education
@@ -109,5 +126,6 @@ export {
 	getContactInfo,
 	getEducation,
 	getExperience,
+	getProjects,
 	getSkills,
 };

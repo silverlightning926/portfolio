@@ -4,6 +4,7 @@ import { uptime } from "process";
 import { ContactInfo } from "./models/contactInfo";
 import { Education } from "./models/education";
 import { Experience } from "./models/experience";
+import { Project } from "./models/projects";
 import { Skills } from "./models/skills";
 import {
 	closeDBConnection,
@@ -11,6 +12,7 @@ import {
 	getContactInfo,
 	getEducation,
 	getExperience,
+	getProjects,
 	getSkills,
 } from "./services/dbService";
 
@@ -65,6 +67,14 @@ app.get("/experience", async (req: Request, res: Response) => {
 	if (!experience) res.status(500).json({ error: "Internal server error" });
 
 	res.status(200).json(experience);
+});
+
+app.get("/projects", async (req: Request, res: Response) => {
+	const projects: Project[] | null = await getProjects();
+
+	if (!projects) res.status(500).json({ error: "Internal server error" });
+
+	res.status(200).json(projects);
 });
 
 app.get("/education", async (req: Request, res: Response) => {
