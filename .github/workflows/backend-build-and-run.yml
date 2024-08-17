@@ -19,12 +19,15 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
+        working-directory: ./portfolio-backend
         run: npm install
 
       - name: Build the project using tsc
+        working-directory: ./portfolio-backend
         run: npm run build
 
       - name: Run the project
+        working-directory: ./portfolio-backend
         env:
           PORT: 3000
           MONGO_URI: ${{ secrets.MONGO_URI }}

@@ -10,18 +10,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Go to backend directory
-        run: cd 'portfolio-backend'
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install dependencies
+        working-directory: ./portfolio-backend
         run: npm install
 
       - name: Run Prettier formatting check
+        working-directory: ./portfolio-backend
         env:
           PORT: 3000
           MONGO_URI: ${{ secrets.MONGO_URI }}
