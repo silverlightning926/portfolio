@@ -60,7 +60,7 @@ async function getContactInfo(): Promise<ContactInfo | null> {
 	try {
 		return COLLECTIONS.contact.findOne<ContactInfo>(
 			{},
-			{ projection: { _id: 0 } }
+			{ projection: { _id: 0 } },
 		);
 	} catch (error) {
 		console.error("Error getting contact info:", error);
