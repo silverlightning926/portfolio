@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import fs from "fs";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { ContactInfo } from "../models/contactInfo";
 import { Education } from "../models/education";
@@ -8,26 +9,16 @@ import { Skills } from "../models/skills";
 
 dotenv.config();
 
-async function checkEnvironment() {
-	if (!process.env.MONGO_URI) throw new Error("MONGO_URI is not defined");
-	if (!process.env.DB_NAME) throw new Error("DB_NAME is not defined");
-	if (!process.env.CONTACT_COLLECTION_NAME)
-		throw new Error("CONTACT_COLLECTION_NAME is not defined");
-	if (!process.env.SKILLS_COLLECTION_NAME)
-		throw new Error("SKILLS_COLLECTION_NAME is not defined");
-	if (!process.env.EXPERIENCE_COLLECTION_NAME)
-		throw new Error("EXPERIENCE_COLLECTION_NAME is not defined");
-	if (!process.env.PROJECTS_COLLECTION_NAME)
-		throw new Error("PROJECTS COLLECTION NAME is not defined");
-	if (!process.env.EDUCATION_COLLECTION_NAME)
-		throw new Error("EDUCATION COLLECTION NAME is not defined");
+const getMongoUri = (): string => {
+	const secretPath = "/run/secrets/mongo_uri";
+	if (fs.existsSync(secretPath)) {
+		return fs.readFileSync(secretPath, "utf8").trim();
+	}
 
-	console.log("Environment variables are set correctly");
-}
+	return process.env.MONGO_URI || "mongodb://localhost:27017";
+};
 
-checkEnvironment();
-
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017";
+const MONGO_URI = getMongoUri();
 
 const MONGO_CLIENT = new MongoClient(MONGO_URI, {
 	serverApi: {
@@ -37,13 +28,14 @@ const MONGO_CLIENT = new MongoClient(MONGO_URI, {
 	},
 });
 
-const DB = MONGO_CLIENT.db(process.env.DB_NAME!);
+const DB = MONGO_CLIENT.db("portfolio");
+
 const COLLECTIONS = {
-	contact: DB.collection(process.env.CONTACT_COLLECTION_NAME!),
-	skills: DB.collection(process.env.SKILLS_COLLECTION_NAME!),
-	experience: DB.collection(process.env.EXPERIENCE_COLLECTION_NAME!),
-	projects: DB.collection(process.env.PROJECTS_COLLECTION_NAME!),
-	education: DB.collection(process.env.EDUCATION_COLLECTION_NAME!),
+	contact: DB.collection("contactInfo"),
+	skills: DB.collection("skills"),
+	experience: DB.collection("experience"),
+	projects: DB.collection("projects"),
+	education: DB.collection("education"),
 };
 
 async function connectToDB(): Promise<void> {
