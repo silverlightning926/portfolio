@@ -5,3 +5,8 @@ services:
             dockerfile: Dockerfile
         ports:
             - "3000:3000"
+        secrets:
+            - mongo_uri
+secrets:
+    mongo_uri:
+        file: ./secrets/mongo-uri.txt
