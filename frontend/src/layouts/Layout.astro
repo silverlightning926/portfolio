@@ -18,7 +18,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="crt flickering-text">
+	<body class="crt">
 		<NavBar />
 		<main>
 			<slot />
@@ -26,7 +26,7 @@ const { title } = Astro.props;
 		<script>
 			function generateFlicker() {
 				const keyframes = Array.from({ length: 90 }, (_, i) => {
-					const opacity = Math.random() * 0.1 + 0.9;
+					const opacity = Math.random() * 0.11 + 0.89;
 					const offset = `${i}%`;
 					return `${offset} { opacity: ${opacity}; }`;
 				});
@@ -47,10 +47,9 @@ const { title } = Astro.props;
 <style is:global>
 	html {
 		font-family: "Courier New", Courier, monospace;
-		line-height: 1.5;
+		margin: 20px;
 	}
 	body.crt {
-		margin: 20px;
 		background-color: black;
 		color: #41ff00;
 		text-shadow:
@@ -75,6 +74,6 @@ const { title } = Astro.props;
 	}
 	.crt {
 		filter: contrast(1.2) blur(0.3px);
-		animation: flicker 0.3s infinite;
+		animation: flicker 1s infinite;
 	}
 </style>
