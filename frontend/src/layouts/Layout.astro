@@ -20,9 +20,7 @@ const { title } = Astro.props;
 	</head>
 	<body class="crt">
 		<NavBar />
-		<main>
-			<slot />
-		</main>
+		<slot />
 		<script>
 			function generateFlicker() {
 				const keyframes = Array.from({ length: 90 }, (_, i) => {
@@ -47,17 +45,17 @@ const { title } = Astro.props;
 <style is:global>
 	html {
 		font-family: "Courier New", Courier, monospace;
-		margin: 20px;
+		filter: blur(0.5px);
 	}
-	body.crt {
+	.crt {
 		background-color: black;
 		color: #41ff00;
 		text-shadow:
 			0 0 2px #41ff00,
 			0 0 4px #41ff00;
-		filter: blur(0.4px);
+		animation: flicker 1s infinite;
 	}
-	body.crt::before {
+	.crt::before {
 		content: "";
 		position: absolute;
 		top: 0;
@@ -71,9 +69,5 @@ const { title } = Astro.props;
 			rgba(0, 0, 0, 0.7) 2px
 		);
 		pointer-events: none;
-	}
-	.crt {
-		filter: contrast(1.2) blur(0.3px);
-		animation: flicker 1s infinite;
 	}
 </style>
