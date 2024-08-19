@@ -31,7 +31,7 @@ const MONGO_CLIENT = new MongoClient(MONGO_URI, {
 const DB = MONGO_CLIENT.db("portfolio");
 
 const COLLECTIONS = {
-	contact: DB.collection("contactInfo"),
+	contact: DB.collection("contactInformation"),
 	skills: DB.collection("skills"),
 	experience: DB.collection("experience"),
 	projects: DB.collection("projects"),
