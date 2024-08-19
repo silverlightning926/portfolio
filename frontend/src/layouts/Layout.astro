@@ -21,6 +21,9 @@ const { title } = Astro.props;
 	<body class="crt min-h-screen">
 		<NavBar />
 		<slot />
+		<div class="name-container">
+			Siddharth Rao<span class="cursor">|</span>
+		</div>
 		<script>
 			function generateFlicker() {
 				const keyframes = Array.from({ length: 90 }, (_, i) => {
