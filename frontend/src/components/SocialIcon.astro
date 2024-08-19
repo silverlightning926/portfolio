@@ -7,13 +7,18 @@ interface Props {
 const { href, icon } = Astro.props;
 ---
 
-<a href={href} target="_blank">
-	<svg
-		viewBox="0 0 24 24"
-		,
-		fill="#41ff00"
-		class="w-10 h-10 mt-5 fill-white hover:fill-[#41ff00]"
-	>
+<a href={href} target="_blank" class="social-icon">
+	<svg viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10">
 		<path d={icon}></path>
 	</svg>
 </a>
+
+<style>
+	.social-icon svg {
+		fill: #41ff00;
+		transition: fill 0.3s;
+	}
+	.social-icon svg:hover {
+		fill: #fff;
+	}
+</style>
