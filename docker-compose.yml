@@ -7,6 +7,14 @@ services:
             - "3000:3000"
         secrets:
             - mongo_uri
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+        depends_on:
+            - backend
 secrets:
     mongo_uri:
         file: ./secrets/mongo-uri.txt
