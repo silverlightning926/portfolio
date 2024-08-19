@@ -11,7 +11,7 @@ import Layout from "../layouts/Layout.astro";
 		<h1 class="text-5xl">Hello! My Name is</h1>
 		<h3 class="mt-4 text-9xl font-bold title">Siddharth Rao</h3>
 		<p class="text-4xl mt-10">Software Engineer & Developer</p>
-		<p class="text-2xl mt-3 inline-block relative scanlines">
+		<p class="text-2xl mt-3 inline-block relative">
 			Full Stack, Robotics, Machine Learning, and More
 			<span class="blinking-cursor">_</span>
 		</p>
@@ -53,22 +53,6 @@ import Layout from "../layouts/Layout.astro";
 			left: 100%;
 			margin-left: 0.7rem;
 			animation: blink 1s step-end infinite;
-		}
-
-		.scanlines::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: repeating-linear-gradient(
-				transparent,
-				transparent 0.5px,
-				rgba(0, 0, 0, 0.1) 1px,
-				rgba(0, 0, 0, 0.7) 2px
-			);
-			pointer-events: none;
 		}
 
 		@keyframes blink {
