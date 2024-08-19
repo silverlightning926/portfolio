@@ -1,38 +1,139 @@
 <nav class="navbar">
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="/about">About</a></li>
-		<li><a href="/experience">Experience</a></li>
-		<li><a href="/projects">Projects</a></li>
-		<li><a href="/education">Education</a></li>
-	</ul>
+	<div class="container">
+		<a href="/" class="brand">Siddharth Rao</a>
+		<button class="navbar-toggle" id="navbar-toggle">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</button>
+		<ul class="navbar-menu" id="navbar-menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/experience">Experience</a></li>
+			<li><a href="/projects">Projects</a></li>
+			<li><a href="/education">Education</a></li>
+		</ul>
+	</div>
 </nav>
 
 <style>
 	.navbar {
-		padding: 1rem;
+		padding: 1.5rem 0 0.8rem 0;
 		position: fixed;
+		top: 0;
+		left: 0;
 		background: rgba(0, 0, 0, 0.95);
-		padding-top: 2rem;
-		height: 5rem;
 		width: 100%;
+		z-index: 1000;
 	}
-	.navbar ul {
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.brand {
+		color: #fff;
+		text-decoration: none;
+		font-size: 1.6rem;
+		font-weight: bold;
+	}
+
+	.navbar-menu {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		display: flex;
-		justify-content: center;
 	}
+
 	.navbar li {
-		margin: 0 3rem;
+		margin: 0 2rem;
 	}
+
 	.navbar a {
 		color: #fff;
 		text-decoration: none;
 		font-size: 1.4rem;
 	}
+
 	.navbar a:hover {
 		text-decoration: underline;
 	}
+
+	/* Hamburger menu */
+	.navbar-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 2rem;
+		height: 1.5rem;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+	}
+
+	.navbar-toggle .bar {
+		display: block;
+		width: 100%;
+		height: 3px;
+		background-color: #fff;
+		transition: all 0.3s ease;
+	}
+
+	/* Responsive Styles */
+	@media (max-width: 768px) {
+		.navbar-menu {
+			display: none;
+			flex-direction: column;
+			position: absolute;
+			top: 5rem;
+			left: 0;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.95);
+		}
+
+		.navbar-menu.show {
+			display: flex;
+		}
+
+		.navbar li {
+			margin: 1rem 0;
+			text-align: center;
+		}
+
+		.navbar-toggle {
+			display: flex;
+		}
+	}
+
+	/* Navbar toggle animation */
+	.navbar-toggle.active .bar:nth-child(1) {
+		transform: rotate(45deg) translate(5px, 5px);
+	}
+
+	.navbar-toggle.active .bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.navbar-toggle.active .bar:nth-child(3) {
+		transform: rotate(-45deg) translate(5px, -5px);
+	}
 </style>
+
+<script>
+	const toggleButton = document.getElementById("navbar-toggle");
+	const navbarMenu = document.getElementById("navbar-menu");
+
+	if (toggleButton) {
+		toggleButton.addEventListener("click", () => {
+			toggleButton.classList.toggle("active");
+			if (navbarMenu) {
+				navbarMenu.classList.toggle("show");
+			}
+		});
+	}
+</script>
