@@ -1,5 +1,5 @@
 ---
-import { ExternalLink } from "lucide-astro";
+import ExternalLinkButton from "../components/ExternalLinkButton.astro";
 import SocialIcon from "../components/SocialIcon.astro";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -11,17 +11,8 @@ import Layout from "../layouts/Layout.astro";
 			<h3 class="mt-4 text-9xl font-bold title">Siddharth Rao</h3>
 			<p class="text-4xl mt-10">Software Engineer & Developer</p>
 			<p class="text-2xl mt-3">Full Stack, Robotics, Machine Learning, and More</p>
-			<div class="mt-10">
-				<div>
-					<a
-						href="../../public/Siddharth_Rao.pdf"
-						target="_blank"
-						class="inline-flex items-center px-3 py-3 text-lg bg-transparent border-4 border-green-500 rounded-full"
-					>
-						Resume
-						<ExternalLink class="ml-3" />
-					</a>
-				</div>
+			<div class="mt-10 flex gap-6">
+				<ExternalLinkButton text="Resume" href="../../public/Siddharth_Rao.pdf" />
 			</div>
 			<div class="flex gap-12 mt-7 justify-center">
 				<SocialIcon

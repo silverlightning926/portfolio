@@ -1,0 +1,21 @@
+---
+import { ExternalLink } from "lucide-astro";
+
+interface Props {
+	text: string;
+	href: string;
+}
+
+const { text, href } = Astro.props;
+---
+
+<div>
+	<a
+		href={href}
+		target="_blank"
+		class="inline-flex items-center px-3 py-3 text-lg bg-transparent border-4 border-green-500 rounded-full"
+	>
+		{text}
+		<ExternalLink class="ml-3" />
+	</a>
+</div>
