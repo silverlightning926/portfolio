@@ -1,0 +1,59 @@
+---
+import ExperienceSection from "../components/ExperienceSection.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Experience - Siddharth Rao's Portfolio">
+	<main
+		class="experience-page flex flex-col items-start justify-start pt-32 p-12 max-w-4xl mx-auto"
+	>
+		<h1 class="title text-5xl font-extrabold tracking-wide">EXPERIENCE</h1>
+		<section class="mt-12">
+			<ExperienceSection
+				title="Software Development Engineer Intern"
+				company="Tech Company"
+				employmentType="Internship"
+				startDate={new Date("2021-06-01")}
+				endDate={new Date("2021-09-01")}
+				bulletPoints={[
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+				]}
+			/>
+			<ExperienceSection
+				title="Software Development Engineer Intern"
+				company="Tech Company"
+				employmentType="Internship"
+				startDate={new Date("2021-06-01")}
+				endDate={new Date("2021-09-01")}
+				bulletPoints={[
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+				]}
+			/>
+			<ExperienceSection
+				title="Software Development Engineer Intern"
+				company="Tech Company"
+				employmentType="Internship"
+				startDate={new Date("2021-06-01")}
+				endDate={new Date("2021-09-01")}
+				bulletPoints={[
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
+				]}
+			/>
+		</section>
+	</main>
+
+	<style>
+		.title {
+			color: #e5e7eb;
+			text-shadow:
+				0 0 4px rgba(255, 255, 255, 0.4),
+				0 0 8px rgba(255, 255, 255, 0.2);
+		}
+	</style>
+</Layout>
