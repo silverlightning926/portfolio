@@ -48,7 +48,10 @@ app.get("/status", (req: Request, res: Response) => {
 app.get("/contact", async (req: Request, res: Response) => {
 	const contact: ContactInfo | null = await getContactInfo();
 
-	if (!contact) res.status(500).json({ error: "Internal server error" });
+	if (!contact) {
+		res.status(500).json({ error: "Internal server error" });
+		return;
+	}
 
 	res.status(200).json(contact);
 });
@@ -56,7 +59,10 @@ app.get("/contact", async (req: Request, res: Response) => {
 app.get("/skills", async (req: Request, res: Response) => {
 	const skills: Skills[] | null = await getSkills();
 
-	if (!skills) res.status(500).json({ error: "Internal server error" });
+	if (!skills) {
+		res.status(500).json({ error: "Internal server error" });
+		return;
+	}
 
 	res.status(200).json(skills);
 });
@@ -64,7 +70,10 @@ app.get("/skills", async (req: Request, res: Response) => {
 app.get("/experience", async (req: Request, res: Response) => {
 	const experience: Experience[] | null = await getExperience();
 
-	if (!experience) res.status(500).json({ error: "Internal server error" });
+	if (!experience) {
+		res.status(500).json({ error: "Internal server error" });
+		return;
+	}
 
 	res.status(200).json(experience);
 });
@@ -72,7 +81,10 @@ app.get("/experience", async (req: Request, res: Response) => {
 app.get("/projects", async (req: Request, res: Response) => {
 	const projects: Project[] | null = await getProjects();
 
-	if (!projects) res.status(500).json({ error: "Internal server error" });
+	if (!projects) {
+		res.status(500).json({ error: "Internal server error" });
+		return;
+	}
 
 	res.status(200).json(projects);
 });
@@ -80,7 +92,10 @@ app.get("/projects", async (req: Request, res: Response) => {
 app.get("/education", async (req: Request, res: Response) => {
 	const experience: Education[] | null = await getEducation();
 
-	if (!experience) res.status(500).json({ error: "Internal server error" });
+	if (!experience) {
+		res.status(500).json({ error: "Internal server error" });
+		return;
+	}
 
 	res.status(200).json(experience);
 });
