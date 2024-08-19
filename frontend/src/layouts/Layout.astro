@@ -24,7 +24,7 @@ const { title } = Astro.props;
 		<script>
 			function generateFlicker() {
 				const keyframes = Array.from({ length: 90 }, (_, i) => {
-					const opacity = Math.random() * 0.11 + 0.89;
+					const opacity = Math.random() * 0.15 + 0.85;
 					const offset = `${i}%`;
 					return `${offset} { opacity: ${opacity}; }`;
 				});
