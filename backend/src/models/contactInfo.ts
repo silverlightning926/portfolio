@@ -3,6 +3,7 @@ import { z } from "zod";
 const ContactInfoSchema = z.object({
 	name: z.string(),
 	nickname: z.string(),
+	title: z.string(),
 	email: z.string(),
 	phoneNumber: z.string(),
 	location: z.string(),
