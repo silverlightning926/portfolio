@@ -10,7 +10,10 @@ import Layout from "../layouts/Layout.astro";
 			<h1 class="text-5xl">Hello! My Name is</h1>
 			<h3 class="mt-4 text-9xl font-bold title">Siddharth Rao</h3>
 			<p class="text-4xl mt-10">Software Engineer & Developer</p>
-			<p class="text-2xl mt-3">Full Stack, Robotics, Machine Learning, and More</p>
+			<p class="text-2xl mt-3 relative inline-block">
+				Full Stack, Robotics, Machine Learning, and More
+				<span class="blinking-cursor">█</span>
+			</p>
 			<div class="mt-10 flex gap-6">
 				<ExternalLinkButton text="Resume" href="../../public/Siddharth_Rao.pdf" />
 			</div>
@@ -33,10 +36,34 @@ import Layout from "../layouts/Layout.astro";
 
 	<style>
 		.title {
-			color: aqua;
+			color: white;
 			text-shadow:
-				0 0 2px aqua,
-				0 0 4px aqua;
+				0 0 2px white,
+				0 0 4px white;
+		}
+
+		.blinking-cursor {
+			font-weight: bold;
+			font-size: 1.5rem;
+			color: white;
+			text-shadow:
+				0 0 2px white,
+				0 0 4px white;
+			position: absolute;
+			width: 10px;
+			left: 100%;
+			margin-left: 0.7rem;
+			animation: blink 1s step-end infinite;
+		}
+
+		@keyframes blink {
+			from,
+			to {
+				visibility: hidden;
+			}
+			50% {
+				visibility: visible;
+			}
 		}
 	</style>
 </Layout>

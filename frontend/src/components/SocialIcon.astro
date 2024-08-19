@@ -8,7 +8,12 @@ const { href, icon } = Astro.props;
 ---
 
 <a href={href} target="_blank">
-	<svg viewBox="0 0 24 24" , fill="#41ff00" class="w-10 h-10 mt-5">
+	<svg
+		viewBox="0 0 24 24"
+		,
+		fill="#41ff00"
+		class="w-10 h-10 mt-5 fill-white hover:fill-[#41ff00]"
+	>
 		<path d={icon}></path>
 	</svg>
 </a>
