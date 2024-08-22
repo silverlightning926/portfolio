@@ -3,8 +3,8 @@ interface Props {
 	title: string;
 	company: string;
 	employmentType: string;
-	startDate: Date;
-	endDate: Date;
+	startDate: string;
+	endDate: string;
 	bulletPoints: string[];
 }
 
@@ -13,11 +13,14 @@ const { title, company, employmentType, startDate, endDate, bulletPoints } =
 ---
 
 <article class="experience-item mb-8">
-	<h2 class="text-2xl sm:text-3xl font-bold">{title}</h2>
-	<p class="text-lg sm:text-xl mt-2">
-		{company} | {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
+	<h2 class="text-2xl sm:text-4xl font-bold">{title}</h2>
+	<p class="text-1xl sm:text-2xl mt-2">
+		{company}
 	</p>
-	<p class="text-lg sm:text-xl mt-2">{employmentType}</p>
+	<p class="subtitle text-lg sm:text-xl mt-2">
+		{startDate} - {endDate}
+	</p>
+	<p class="subtitle text-lg sm:text-xl mt-2">{employmentType}</p>
 	<ul
 		class="list-disc list-inside mt-4 text-base sm:text-lg leading-relaxed text-gray-300"
 	>
@@ -34,7 +37,11 @@ const { title, company, employmentType, startDate, endDate, bulletPoints } =
 	}
 	.experience-item h2 {
 		color: #e5e7eb;
-		text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+		text-shadow: 0 0 10px rgba(207, 123, 123, 0.4);
+	}
+	.experience-item .subtitle {
+		color: rgb(160, 160, 160);
+		text-shadow: 0 0 10px rgb(160, 160, 160);
 	}
 	.experience-item p {
 		color: #41ff00;

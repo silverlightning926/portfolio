@@ -1,6 +1,15 @@
 ---
+import axios from "axios";
 import SkillsSection from "../components/SkillsSection.astro";
 import Layout from "../layouts/Layout.astro";
+import type { ContactInfo } from "../models/contactInfo";
+import type { Skills } from "../models/skills";
+
+const aboutReq = await axios.get("http://localhost:3000/contact");
+const aboutData: ContactInfo = aboutReq.data;
+
+const skillsReq = await axios.get("http://localhost:3000/skills");
+const skillsData: Skills[] = skillsReq.data;
 ---
 
 <Layout title="About - Siddharth Rao's Portfolio">
@@ -8,41 +17,15 @@ import Layout from "../layouts/Layout.astro";
 		class="flex flex-col items-start justify-start pt-32 p-12 max-w-4xl mx-auto"
 	>
 		<h1 class="title text-5xl font-extrabold tracking-wide">ABOUT</h1>
-		<p class="text-xl mt-6 leading-relaxed">
-			My name is Siddharth Rao. I am a software developer based in the Greater
-			Seattle Area, with experience in a multitude of fields including full stack
-			development, mobile development, robotics, machine learning, and more. I am
-			passionate about learning new technologies and building innovative solutions
-			to real-world problems. As a recent graduate from the University of
-			Washington, I am excited to continue my journey in the tech industry. I am
-			currently seeking opportunities to work on exciting projects and collaborate
-			with talented teams. Feel free to reach out to me if you would like to
-			connect! I am always open to new opportunities and challenges. Let's build
-			something amazing together!
-		</p>
+		<p class="text-xl mt-6 leading-relaxed">{aboutData.about}</p>
 
 		<h2 class="title text-4xl font-extrabold tracking-wide mt-12">SKILLS</h2>
 		<div class="mt-6 flex flex-wrap gap-8">
-			<SkillsSection
-				title="Languages"
-				items={["JavaScript", "Python", "Java", "C++", "C#", "SQL", "HTML/CSS"]}
-			/>
-			<SkillsSection
-				title="Frameworks & Tools"
-				items={[
-					"React",
-					"Node.js",
-					"Express",
-					"MongoDB",
-					"TensorFlow",
-					"Unity",
-					"ROS",
-				]}
-			/>
-			<SkillsSection
-				title="Other"
-				items={["Git", "Docker", "Kubernetes", "CI/CD", "Agile", "Scrum", "JIRA"]}
-			/>
+			{
+				skillsData.map((skill) => (
+					<SkillsSection title={skill.category} items={skill.skills} />
+				))
+			}
 		</div>
 	</main>
 

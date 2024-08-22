@@ -1,6 +1,11 @@
 ---
+import axios from "axios";
 import ExperienceSection from "../components/ExperienceSection.astro";
 import Layout from "../layouts/Layout.astro";
+import type { Experience } from "../models/experience";
+
+const experienceReq = await axios.get("http://localhost:3000/experience");
+const aboutData: Experience[] = experienceReq.data;
 ---
 
 <Layout title="Experience - Siddharth Rao's Portfolio">
@@ -9,42 +14,34 @@ import Layout from "../layouts/Layout.astro";
 	>
 		<h1 class="title text-5xl font-extrabold tracking-wide">EXPERIENCE</h1>
 		<section class="mt-12">
-			<ExperienceSection
-				title="Software Development Engineer Intern"
-				company="Tech Company"
-				employmentType="Internship"
-				startDate={new Date("2021-06-01")}
-				endDate={new Date("2021-09-01")}
-				bulletPoints={[
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-				]}
-			/>
-			<ExperienceSection
-				title="Software Development Engineer Intern"
-				company="Tech Company"
-				employmentType="Internship"
-				startDate={new Date("2021-06-01")}
-				endDate={new Date("2021-09-01")}
-				bulletPoints={[
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-				]}
-			/>
-			<ExperienceSection
-				title="Software Development Engineer Intern"
-				company="Tech Company"
-				employmentType="Internship"
-				startDate={new Date("2021-06-01")}
-				endDate={new Date("2021-09-01")}
-				bulletPoints={[
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-				]}
-			/>
+			{
+				aboutData.map((experience) => {
+					const formattedStartDate = new Date(
+						experience.startDate,
+					).toLocaleDateString("en-US", {
+						year: "numeric",
+						month: "long",
+					});
+
+					const formattedEndDate = experience.endDate
+						? new Date(experience.endDate).toLocaleDateString("en-US", {
+								year: "numeric",
+								month: "long",
+							})
+						: "Present";
+
+					return (
+						<ExperienceSection
+							title={experience.title}
+							company={experience.company}
+							employmentType={experience.employmentType}
+							startDate={formattedStartDate}
+							endDate={formattedEndDate}
+							bulletPoints={experience.bulletPoints}
+						/>
+					);
+				})
+			}
 		</section>
 	</main>
 

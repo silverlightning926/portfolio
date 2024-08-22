@@ -1,6 +1,11 @@
 ---
-import ExperienceSection from "../components/ExperienceSection.astro";
+import axios from "axios";
+import ProjectSection from "../components/ProjectSection.astro";
 import Layout from "../layouts/Layout.astro";
+import type { Project } from "../models/projects";
+
+const projectsReq = await axios.get("http://localhost:3000/projects");
+const projectsData: Project[] = projectsReq.data;
 ---
 
 <Layout title="Projects - Siddharth Rao's Portfolio">
@@ -9,42 +14,13 @@ import Layout from "../layouts/Layout.astro";
 	>
 		<h1 class="title text-5xl font-extrabold tracking-wide">PROJECTS</h1>
 		<section class="mt-12">
-			<ExperienceSection
-				title="Software Development Engineer Intern"
-				company="Tech Company"
-				employmentType="Internship"
-				startDate={new Date("2021-06-01")}
-				endDate={new Date("2021-09-01")}
-				bulletPoints={[
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-				]}
-			/>
-			<ExperienceSection
-				title="Software Development Engineer Intern"
-				company="Tech Company"
-				employmentType="Internship"
-				startDate={new Date("2021-06-01")}
-				endDate={new Date("2021-09-01")}
-				bulletPoints={[
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-				]}
-			/>
-			<ExperienceSection
-				title="Software Development Engineer Intern"
-				company="Tech Company"
-				employmentType="Internship"
-				startDate={new Date("2021-06-01")}
-				endDate={new Date("2021-09-01")}
-				bulletPoints={[
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-					"Lorem ipsum odor amet, consectetuer adipiscing elit.",
-				]}
-			/>
+			{
+				projectsData.map((project) => {
+					return (
+						<ProjectSection name={project.name} bulletPoints={project.bulletPoints} />
+					);
+				})
+			}
 		</section>
 	</main>
 
