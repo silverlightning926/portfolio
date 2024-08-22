@@ -6,29 +6,27 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Home - Siddharth Rao's Portfolio">
 	<main
-		class="landing-page flex flex-col items-center justify-center text-center min-h-screen px-4"
+		class="landing-page flex flex-col items-center justify-center text-center h-screen px-4"
 	>
-		<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+		<h1 class="text-5xl sm:text-4xl md:text-5xl lg:text-5xl">
 			Hello! My Name is
 		</h1>
 		<h3
-			class="mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wide title"
+			class="mt-6 text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold tracking-wide title"
 		>
 			Siddharth Rao
 		</h3>
-		<p class="text-xl sm:text-2xl md:text-3xl mt-8">
-			<span class="highlighted-text">Software</span> Engineer & Developer
+		<p class="text-2xl sm:text-3xl md:text-4xl mt-12">
+			<span class="highlighted-text">Software</span>Engineer & Developer
 		</p>
-		<p
-			class="text-lg sm:text-xl md:text-2xl mt-6 flex justify-center items-center"
-		>
+		<p class="text-lg sm:text-xl md:text-2xl mt-8 flex justify-center">
 			Full Stack, Robotics, Machine Learning, and More
 			<span class="blinking-cursor">_</span>
 		</p>
-		<div class="mt-10 flex flex-col sm:flex-row gap-4 items-center">
+		<div class="mt-12 flex flex-col gap-4 items-center sm:flex-row sm:gap-6">
 			<ExternalLinkButton text="Resume" href="../../public/Siddharth_Rao.pdf" />
 		</div>
-		<div class="flex flex-row gap-6 mt-10 items-center">
+		<div class="flex flex-col gap-6 mt-12 items-center sm:flex-row sm:gap-12">
 			<SocialIcon
 				href="https://www.google.com"
 				icon="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"
@@ -50,37 +48,56 @@ import Layout from "../layouts/Layout.astro";
 		}
 		.title {
 			color: white;
-			text-shadow: 0 0 4px white;
+			text-shadow:
+				0 0 2px white,
+				0 0 4px white;
 		}
 		.blinking-cursor {
+			position: relative;
 			font-weight: bold;
 			font-size: 1.5rem;
 			color: white;
-			margin-left: 0.5rem;
+			text-shadow:
+				0 0 2px white,
+				0 0 4px white;
+			width: 10px;
+			margin-left: 0.7rem;
 			animation: blink 1s step-end infinite;
 		}
 
 		.highlighted-text {
 			background-color: blue;
+			border-color: transparent;
 			color: white;
 			padding: 0.25rem 0.5rem;
-			margin-right: 0.5rem;
+			filter: drop-shadow(0 0 20px blue);
+			margin-right: 1.125rem;
 		}
 
 		@keyframes blink {
+			from,
+			to {
+				visibility: hidden;
+			}
 			50% {
-				opacity: 0;
+				visibility: visible;
 			}
 		}
 
 		@media (max-width: 768px) {
 			.text-4xl {
-				font-size: 2.25rem;
+				font-size: 2.5rem;
 			}
-			.text-6xl {
-				font-size: 3.5rem;
+			.text-9xl {
+				font-size: 4rem;
+			}
+			.text-4xl {
+				font-size: 2rem;
 			}
 			.text-2xl {
+				font-size: 1.25rem;
+			}
+			.blinking-cursor {
 				font-size: 1.25rem;
 			}
 		}
@@ -89,11 +106,17 @@ import Layout from "../layouts/Layout.astro";
 			.text-5xl {
 				font-size: 2rem;
 			}
+			.text-6xl {
+				font-size: 2.5rem;
+			}
 			.text-7xl {
 				font-size: 3rem;
 			}
+			.text-9xl {
+				font-size: 4rem;
+			}
 			.highlighted-text {
-				font-size: 0.875rem;
+				font-size: 1rem;
 			}
 		}
 	</style>
