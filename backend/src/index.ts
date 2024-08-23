@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import { uptime } from "process";
@@ -36,6 +37,13 @@ connectToDB()
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
+
+const corsOptions = {
+	origin: process.env.CORS_ORIGIN,
+	optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.get("/status", (req: Request, res: Response) => {
 	res.status(200).json({
