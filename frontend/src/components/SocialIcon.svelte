@@ -1,13 +1,9 @@
----
-interface Props {
-	href: string;
-	icon: string;
-}
+<script lang="ts">
+	export let link: string;
+	export let icon: string;
+</script>
 
-const { href, icon } = Astro.props;
----
-
-<a href={href} target="_blank" class="social-icon">
+<a href={link} target="_blank" class="social-icon">
 	<svg viewBox="0 0 24 24" fill="currentColor" class="icon">
 		<path d={icon}></path>
 	</svg>
