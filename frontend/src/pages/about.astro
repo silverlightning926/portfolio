@@ -13,10 +13,12 @@ const API_URL =
 		? "http://backend:3000"
 		: "http://localhost:3000";
 
-const aboutReq = await axios.get(`${API_URL}/contact`);
-const aboutData: ContactInfo = aboutReq.data;
+const [aboutReq, skillsReq] = await Promise.all([
+	axios.get(`${API_URL}/contact`),
+	axios.get(`${API_URL}/skills`),
+]);
 
-const skillsReq = await axios.get(`${API_URL}/skills`);
+const aboutData: ContactInfo = aboutReq.data;
 const skillsData: Skills[] = skillsReq.data;
 ---
 
