@@ -1,7 +1,0 @@
-{
-	"watch": [
-		"src, nodemon.json, tsconfig.json, package.json, package-lock.json, .env"
-	],
-	"ext": "ts",
-	"exec": "ts-node src/index.ts"
-}
