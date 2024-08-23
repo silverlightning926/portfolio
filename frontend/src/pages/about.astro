@@ -1,14 +1,22 @@
 ---
 import axios from "axios";
+import dotenv from "dotenv";
 import SkillsSection from "../components/SkillsSection.astro";
 import Layout from "../layouts/Layout.astro";
 import type { ContactInfo } from "../models/contactInfo";
 import type { Skills } from "../models/skills";
 
-const aboutReq = await axios.get("http://localhost:3000/contact");
+dotenv.config();
+
+const API_URL =
+	process.env.NODE_ENV === "production"
+		? "http://backend:3000"
+		: "http://localhost:3000";
+
+const aboutReq = await axios.get(`${API_URL}/contact`);
 const aboutData: ContactInfo = aboutReq.data;
 
-const skillsReq = await axios.get("http://localhost:3000/skills");
+const skillsReq = await axios.get(`${API_URL}/skills`);
 const skillsData: Skills[] = skillsReq.data;
 ---
 

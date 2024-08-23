@@ -1,10 +1,18 @@
 ---
 import axios from "axios";
+import dotenv from "dotenv";
 import ProjectSection from "../components/ProjectSection.astro";
 import Layout from "../layouts/Layout.astro";
 import type { Project } from "../models/projects";
 
-const projectsReq = await axios.get("http://localhost:3000/projects");
+dotenv.config();
+
+const API_URL =
+	process.env.NODE_ENV === "production"
+		? "http://backend:3000"
+		: "http://localhost:3000";
+
+const projectsReq = await axios.get(`${API_URL}/projects`);
 const projectsData: Project[] = projectsReq.data;
 ---
 

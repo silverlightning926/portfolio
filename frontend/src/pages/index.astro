@@ -1,11 +1,19 @@
 ---
 import axios from "axios";
+import dotenv from "dotenv";
 import ExternalLinkButton from "../components/ExternalLinkButton.astro";
 import SocialIcon from "../components/SocialIcon.astro";
 import Layout from "../layouts/Layout.astro";
 import type { ContactInfo } from "../models/contactInfo";
 
-const contactReq = await axios.get("http://localhost:3000/contact");
+dotenv.config();
+
+const API_URL =
+	process.env.NODE_ENV === "production"
+		? "http://backend:3000"
+		: "http://localhost:3000";
+
+const contactReq = await axios.get(`${API_URL}/contact`);
 const { name, title, email, links }: ContactInfo = contactReq.data;
 const { github, linkedin } = links;
 ---

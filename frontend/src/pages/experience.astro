@@ -1,10 +1,18 @@
 ---
 import axios from "axios";
+import dotenv from "dotenv";
 import ExperienceSection from "../components/ExperienceSection.astro";
 import Layout from "../layouts/Layout.astro";
 import type { Experience } from "../models/experience";
 
-const experienceReq = await axios.get("http://localhost:3000/experience");
+dotenv.config();
+
+const API_URL =
+	process.env.NODE_ENV === "production"
+		? "http://backend:3000"
+		: "http://localhost:3000";
+
+const experienceReq = await axios.get(`${API_URL}/experience`);
 const aboutData: Experience[] = experienceReq.data;
 ---
 
