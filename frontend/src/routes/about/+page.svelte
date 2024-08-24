@@ -21,13 +21,13 @@
 			{/each}
 		</div>
 	</main>
-
-	<style>
-		.title {
-			color: #e5e7eb;
-			text-shadow:
-				0 0 4px rgba(255, 255, 255, 0.4),
-				0 0 8px rgba(255, 255, 255, 0.2);
-		}
-	</style>
 </Layout>
+
+<style>
+	.title {
+		color: #e5e7eb;
+		text-shadow:
+			0 0 4px rgba(255, 255, 255, 0.4),
+			0 0 8px rgba(255, 255, 255, 0.2);
+	}
+</style>
