@@ -1,122 +1,126 @@
 <script lang="ts">
-    let isMenuOpen: boolean = false;
+	let isMenuOpen: boolean = false;
 
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-    }
+	function toggleMenu() {
+		isMenuOpen = !isMenuOpen;
+	}
 </script>
 
 <nav class="navbar">
-    <div class="container">
-        <a href="/" class="brand">Siddharth Rao</a>
-        <button class="navbar-toggle" on:click={toggleMenu} aria-expanded={isMenuOpen} aria-controls="navbar-menu">
-            <span class="bar" class:isMenuOpen="{isMenuOpen}"></span>
-            <span class="bar" class:isMenuOpen="{isMenuOpen}"></span>
-            <span class="bar" class:isMenuOpen="{isMenuOpen}"></span>
-        </button>
-        <ul class="navbar-menu" id="navbar-menu" class:show={isMenuOpen}>
-            <li><a href="/">&ltHome/&gt</a></li>
-            <li><a href="/about">&ltAbout/&gt</a></li>
-            <li><a href="/experience">&ltExperience/&gt</a></li>
-            <li><a href="/projects">&ltProjects/&gt</a></li>
-            <li><a href="/education">&ltEducation/&gt</a></li>
-        </ul>
-    </div>
+	<div class="container">
+		<a href="/" class="brand">Siddharth Rao</a>
+		<button
+			class="navbar-toggle"
+			on:click={toggleMenu}
+			aria-expanded={isMenuOpen}
+			aria-controls="navbar-menu"
+		>
+			<span class="bar" class:isMenuOpen></span>
+			<span class="bar" class:isMenuOpen></span>
+			<span class="bar" class:isMenuOpen></span>
+		</button>
+		<ul class="navbar-menu" id="navbar-menu" class:show={isMenuOpen}>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/experience">Experience</a></li>
+			<li><a href="/projects">Projects</a></li>
+			<li><a href="/education">Education</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+	</div>
 </nav>
 
 <style>
-    .navbar {
-        padding: 1.5rem 0.8rem;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.9);
-        width: 100%;
-        height: 4rem;
-        z-index: 2;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
+	.navbar {
+		padding: 1.5rem 0.8rem;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.9);
+		width: 100%;
+		height: 4rem;
+		z-index: 2;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+	}
 
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
 
-    .brand {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.6rem;
-        font-weight: bold;
-    }
+	.brand {
+		color: #fff;
+		text-decoration: none;
+		font-size: 1.6rem;
+		font-weight: bold;
+		margin-right: 2rem;
+	}
 
-    .navbar-menu {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
+	.navbar-menu {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 3rem;
+	}
 
-    .navbar li {
-        margin: 0 1.5rem;
-    }
+	.navbar a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 1.2rem;
+		transition: color 0.3s ease;
+	}
 
-    .navbar a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2rem;
-        transition: color 0.3s ease;
-    }
+	.navbar a:hover {
+		color: #ddd;
+	}
 
-    .navbar a:hover {
-        color: #ddd;
-    }
+	.navbar-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 1.5rem;
+		height: 1.25rem;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+	}
 
-    .navbar-toggle {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 1.5rem;
-        height: 1.25rem;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-    }
+	.navbar-toggle .bar {
+		display: block;
+		width: 100%;
+		height: 2px;
+		background-color: #fff;
+		transition: all 0.3s ease;
+	}
 
-    .navbar-toggle .bar {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: #fff;
-        transition: all 0.3s ease;
-    }
+	@media (max-width: 768px) {
+		.navbar-menu {
+			display: none;
+			flex-direction: column;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.9);
+			padding: 1rem 0;
+		}
 
-    @media (max-width: 768px) {
-        .navbar-menu {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 1rem 0;
-        }
+		.navbar-menu.show {
+			display: flex;
+		}
 
-        .navbar-menu.show {
-            display: flex;
-        }
+		.navbar li {
+			margin: 1rem 0;
+			text-align: center;
+		}
 
-        .navbar li {
-            margin: 1rem 0;
-            text-align: center;
-        }
-
-        .navbar-toggle {
-            display: flex;
-        }
-    }
+		.navbar-toggle {
+			display: flex;
+		}
+	}
 </style>
