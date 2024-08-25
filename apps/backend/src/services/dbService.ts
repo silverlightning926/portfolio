@@ -1,11 +1,11 @@
 import dotenv from "dotenv";
 import fs from "fs";
 import { MongoClient, ServerApiVersion } from "mongodb";
-import { ContactInfo } from "../models/contactInfo";
-import { Education } from "../models/education";
-import { Experience } from "../models/experience";
-import { Project } from "../models/projects";
-import { Skills } from "../models/skills";
+import { ContactInfo } from "../types/contactInfo";
+import { Education } from "../types/education";
+import { Experience } from "../types/experience";
+import { Project } from "../types/projects";
+import { Skills } from "../types/skills";
 
 dotenv.config();
 

@@ -1,0 +1,26 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"format": {
+			"outputLogs": "none",
+			"outputs": []
+		},
+		"format:check": {
+			"outputLogs": "none",
+			"outputs": []
+		},
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**/*"]
+		},
+		"serve": {
+			"dependsOn": ["build"],
+			"persistent": true
+		}
+	},
+	"globalDependencies": ["tsconfig.base.json", ".prettierrc"]
+}

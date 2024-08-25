@@ -1,0 +1,25 @@
+{
+	"name": "portfolio",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"serve": "turbo serve",
+		"dev": "turbo dev",
+		"format": "turbo format",
+		"format:check": "turbo format:check"
+	},
+	"devDependencies": {
+		"prettier": "^3.2.5",
+		"turbo": "^2.0.14",
+		"typescript": "^5.4.5",
+		"@repo/types": "1.0.0"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"packageManager": "npm@10.8.2",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	]
+}
