@@ -1,15 +1,8 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "Node 20",
-	"_version": "20.15.0",
+	"extends": "@repo/typescript-config/base.json",
 	"compilerOptions": {
-		"target": "ES6",
-		"module": "commonjs",
 		"outDir": "./dist",
-		"rootDir": "./src",
-		"strict": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true
+		"rootDir": "./src"
 	},
 	"include": ["src/**/*.ts"],
 	"exclude": ["node_modules"]
