@@ -2,11 +2,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import { uptime } from "process";
-import { ContactInfo } from "./models/contactInfo";
-import { Education } from "./models/education";
-import { Experience } from "./models/experience";
-import { Project } from "./models/projects";
-import { Skills } from "./models/skills";
 import {
 	closeDBConnection,
 	connectToDB,
@@ -16,6 +11,11 @@ import {
 	getProjects,
 	getSkills,
 } from "./services/dbService";
+import { ContactInfo } from "./types/contactInfo";
+import { Education } from "./types/education";
+import { Experience } from "./types/experience";
+import { Project } from "./types/projects";
+import { Skills } from "./types/skills";
 
 dotenv.config();
 
