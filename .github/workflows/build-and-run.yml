@@ -1,4 +1,4 @@
-name: Backend | Build and Run (tsc)
+name: Build and Run
 
 on: [push, pull_request]
 
