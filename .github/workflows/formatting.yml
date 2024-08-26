@@ -1,0 +1,25 @@
+name: Backend | Formatting Check
+
+on: [push, pull_request]
+
+jobs:
+ formatting-check:
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: Checkout code
+     uses: actions/checkout@v4.1.7
+
+   - name: Set up Node.js
+     uses: actions/setup-node@v4.0.3
+     with:
+      node-version: 20
+
+   - name: Install dependencies
+     run: npm install
+
+   - name: Run Prettier formatting check
+     env:
+      PORT: 3000
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+     run: npm run format:check

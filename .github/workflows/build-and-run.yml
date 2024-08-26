@@ -1,0 +1,30 @@
+name: Backend | Build and Run (tsc)
+
+on: [push, pull_request]
+
+jobs:
+ build-and-run:
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: Checkout code
+     uses: actions/checkout@v4.1.7
+
+   - name: Set up Node.js
+     uses: actions/setup-node@v4.0.3
+     with:
+      node-version: 20
+
+   - name: Install dependencies
+     run: npm install
+
+   - name: Build the project
+     run: npm run build
+
+   - name: Run the project
+     env:
+      PORT: 3000
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+     run: |
+      nohup npm run serve &
+      sleep 3
