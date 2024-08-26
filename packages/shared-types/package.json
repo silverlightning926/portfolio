@@ -1,0 +1,19 @@
+{
+	"name": "@repo/shared-types",
+	"version": "0.0.0",
+	"private": true,
+	"license": "MIT",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"zod": "^3.23.8"
+	},
+	"scripts": {
+		"build": "tsc",
+		"format": "prettier --write src/**/*.ts",
+		"format:check": "prettier --check src/**/*.ts"
+	}
+}

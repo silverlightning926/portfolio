@@ -1,11 +1,7 @@
 import dotenv from "dotenv";
 import fs from "fs";
 import { MongoClient, ServerApiVersion } from "mongodb";
-import { ContactInfo } from "../types/contactInfo";
-import { Education } from "../types/education";
-import { Experience } from "../types/experience";
-import { Project } from "../types/projects";
-import { Skills } from "../types/skills";
+import { ContactInfo, Education, Experience, Project, Skills } from "@repo/shared-types";
 
 dotenv.config();
 

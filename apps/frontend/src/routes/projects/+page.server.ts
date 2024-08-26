@@ -1,5 +1,5 @@
+import type { Project } from "@repo/shared-types";
 import axios from "axios";
-import type { Project } from "../../types/projects";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async () => {

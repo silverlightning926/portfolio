@@ -6,3 +6,4 @@ const SkillsSchema = z.object({
 });
 
 export type Skills = z.infer<typeof SkillsSchema>;
+export { SkillsSchema };

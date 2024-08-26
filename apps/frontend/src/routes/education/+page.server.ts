@@ -1,5 +1,5 @@
+import type { Education } from "@repo/shared-types";
 import axios from "axios";
-import type { Education } from "../../types/education";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async () => {

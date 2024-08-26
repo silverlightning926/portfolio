@@ -1,5 +1,5 @@
+import type { Experience } from "@repo/shared-types";
 import axios from "axios";
-import type { Experience } from "../../types/experience";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async () => {

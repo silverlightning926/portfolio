@@ -15,3 +15,4 @@ const ContactInfoSchema = z.object({
 });
 
 export type ContactInfo = z.infer<typeof ContactInfoSchema>;
+export { ContactInfoSchema };

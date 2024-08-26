@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const EducationSchema = z.object({
+const EducationSchema = z.object({
 	school: z.string(),
 	degree: z.string(),
 	fieldOfStudy: z.string(),
@@ -10,3 +10,4 @@ export const EducationSchema = z.object({
 });
 
 export type Education = z.infer<typeof EducationSchema>;
+export { EducationSchema };

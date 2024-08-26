@@ -1,5 +1,5 @@
+import type { ContactInfo } from "@repo/shared-types";
 import axios from "axios";
-import type { ContactInfo } from "../../types/contactInfo";
 import type { PageServerLoad } from "./$types";
 
 export const load = (async () => {
