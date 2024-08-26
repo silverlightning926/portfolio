@@ -6,6 +6,18 @@
 			"cache": false,
 			"persistent": true
 		},
+		"backend#dev": {
+			"dependsOn": ["^build"],
+			"cache": false,
+			"persistent": true,
+			"env": ["BACKEND_PORT", "MONGO_URI", "CORS_ORIGIN"]
+		},
+		"frontend#dev": {
+			"dependsOn": ["^build"],
+			"cache": false,
+			"persistent": true,
+			"env": ["VITE_API_URL"]
+		},
 		"format": {
 			"outputLogs": "none",
 			"outputs": []
@@ -18,9 +30,29 @@
 			"dependsOn": ["^build"],
 			"outputs": ["dist/**/*"]
 		},
+		"backend#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**/*"],
+			"env": ["BACKEND_PORT", "MONGO_URI", "CORS_ORIGIN"]
+		},
+		"frontend#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**/*"],
+			"env": ["VITE_API_URL"]
+		},
 		"serve": {
 			"dependsOn": ["build"],
 			"persistent": true
+		},
+		"backend#serve": {
+			"dependsOn": ["backend#build"],
+			"persistent": true,
+			"env": ["BACKEND_PORT", "MONGO_URI", "CORS_ORIGIN"]
+		},
+		"frontend#serve": {
+			"dependsOn": ["frontend#build"],
+			"persistent": true,
+			"env": ["VITE_API_URL"]
 		}
 	},
 	"globalDependencies": ["tsconfig.base.json", ".prettierrc"]
