@@ -48,7 +48,7 @@
 
 <style>
 	.landing-page {
-		padding: 8rem 1rem;
+		padding: 6rem 1rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
