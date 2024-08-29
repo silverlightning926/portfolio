@@ -27,7 +27,7 @@
 			<span class="blinking-cursor">_</span>
 		</p>
 		<div class="mt-12 flex flex-col gap-4 items-center sm:flex-row sm:gap-6">
-			<ResumeButton href="/files/resume.pdf" text="Resume" />
+			<ResumeButton href="" text="Resume" />
 		</div>
 		<div class="flex flex-col gap-6 mt-12 items-center sm:flex-row sm:gap-12">
 			<SocialIcon
