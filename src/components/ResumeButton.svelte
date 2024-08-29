@@ -37,24 +37,12 @@
 			padding: 0.5rem 1rem;
 			font-size: 1rem;
 		}
-
-		.icon {
-			width: 1.25rem;
-			height: 1.25rem;
-			margin-left: 0.5rem;
-		}
 	}
 
 	@media (min-width: 1024px) {
 		.external-link-button {
 			padding: 0.75rem 1.5rem;
 			font-size: 1.25rem;
-		}
-
-		.icon {
-			width: 1.75rem;
-			height: 1.75rem;
-			margin-left: 1rem;
 		}
 	}
 </style>
