@@ -34,7 +34,7 @@ jobs:
 
    - name: Fetch JSON files from S3
      run: |
-      aws s3 cp ${{ secrets.PORTFOLIO_DATA_S3_LINK }} src/lib --recursive
+      aws s3 cp ${{ secrets.PORTFOLIO_DATA_S3_LINK }} src/lib --recursive --quiet
 
    - name: Build the site
      run: npm run build
@@ -45,7 +45,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
      run: |
-      aws s3 sync build/ ${{ secrets.PORTFOLIO_HOSTING_S3_LINK }} --delete
+      aws s3 sync build/ ${{ secrets.PORTFOLIO_HOSTING_S3_LINK }} --delete --quiet
 
    - name: Invalidate CloudFront Cache
      env:
@@ -53,4 +53,4 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
      run: |
-      aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*" --quiet
