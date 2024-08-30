@@ -1,6 +1,6 @@
 <script lang="ts">
+	import contactInfoData from "$lib/data/contactInfo.json";
 	import Layout from "../+layout.svelte";
-	import contactInfoData from "../../static/data/contactInfo.json";
 	import type { ContactInfo } from "../../types/contactInfo";
 
 	const contactInfo: ContactInfo = contactInfoData;

@@ -1,7 +1,7 @@
 <script lang="ts">
+	import educationData from "$lib/data/education.json";
 	import Layout from "../+layout.svelte";
 	import EducationSection from "../../components/EducationSection.svelte";
-	import educationData from "../../static/data/education.json";
 	import type { Education } from "../../types/education";
 
 	const education: Education[] = educationData;

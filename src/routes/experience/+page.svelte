@@ -1,7 +1,7 @@
 <script lang="ts">
+	import experienceData from "$lib/data/experience.json";
 	import Layout from "../+layout.svelte";
 	import ExperienceSection from "../../components/ExperienceSection.svelte";
-	import experienceData from "../../static/data/experience.json";
 	import type { Experience } from "../../types/experience";
 
 	const experience: Experience[] = experienceData;

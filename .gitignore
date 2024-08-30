@@ -24,4 +24,4 @@ vite.config.ts.timestamp-*
 .DS_Store
 
 # Data
-/src/static/
+/src/lib/

@@ -1,7 +1,7 @@
 <script lang="ts">
+	import projectData from "$lib/data/projects.json";
 	import Layout from "../+layout.svelte";
 	import ProjectSection from "../../components/ProjectSection.svelte";
-	import projectData from "../../static/data/projects.json";
 	import type { Project } from "../../types/project";
 
 	const projects: Project[] = projectData;

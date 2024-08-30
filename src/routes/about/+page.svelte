@@ -1,8 +1,8 @@
 <script lang="ts">
+	import contactInfoData from "$lib/data/contactInfo.json";
+	import skillsData from "$lib/data/skills.json";
 	import Layout from "../+layout.svelte";
 	import SkillsSection from "../../components/SkillsSection.svelte";
-	import contactInfoData from "../../static/data/contactInfo.json";
-	import skillsData from "../../static/data/skills.json";
 	import type { ContactInfo } from "../../types/contactInfo";
 	import type { Skills } from "../../types/skills";
 

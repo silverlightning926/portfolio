@@ -1,7 +1,8 @@
 <script lang="ts">
+	import contactInfoData from "$lib/data/contactInfo.json";
+	import resumePDF from "$lib/files/Siddharth_Rao_Resume.pdf";
 	import ResumeButton from "../components/ResumeButton.svelte";
 	import SocialIcon from "../components/SocialIcon.svelte";
-	import contactInfoData from "../static/data/contactInfo.json";
 	import type { ContactInfo } from "../types/contactInfo";
 	import Layout from "./+layout.svelte";
 
@@ -27,7 +28,7 @@
 			<span class="blinking-cursor">_</span>
 		</p>
 		<div class="mt-12 flex flex-col gap-4 items-center sm:flex-row sm:gap-6">
-			<ResumeButton href="" text="Resume" />
+			<ResumeButton href={resumePDF} text="Resume" />
 		</div>
 		<div class="flex flex-col gap-6 mt-12 items-center sm:flex-row sm:gap-12">
 			<SocialIcon
