@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM node:20-slim AS build
 
 WORKDIR /app
 
@@ -8,10 +8,10 @@ RUN npm install
 
 COPY . .
 
-ENV VITE_API_URL=http://backend:4000
-
 RUN npm run build
 
-EXPOSE 3000
+FROM httpd:2.4 AS deploy
 
-CMD [ "node", "./build/index.js" ]
+COPY --from=build /app/build /usr/local/apache2/htdocs
+
+EXPOSE 80
