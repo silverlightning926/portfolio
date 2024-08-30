@@ -15,8 +15,6 @@
 		<p>{contactInfo.name}</p>
 		<h2>Email</h2>
 		<a href="mailto:{contactInfo.email}">{contactInfo.email}</a>
-		<h2>Phone</h2>
-		<a href="tel:{contactInfo.phoneNumber}">{contactInfo.phoneNumber}</a>
 		<h2>LinkedIn</h2>
 		<a href={contactInfo.links.linkedin}
 			>{contactInfo.links.linkedin.replace("https://www.", "")}</a
