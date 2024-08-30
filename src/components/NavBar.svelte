@@ -1,8 +1,14 @@
 <script lang="ts">
+	import { building } from "$app/environment";
+
 	let isMenuOpen: boolean = false;
 
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
+	}
+
+	function getLink(path: string) {
+		return !building ? `${path}.html` : path;
 	}
 </script>
 
@@ -21,11 +27,11 @@
 		</button>
 		<ul class="navbar-menu" id="navbar-menu" class:show={isMenuOpen}>
 			<li><a href="/">Home</a></li>
-			<li><a href="/about.html">About</a></li>
-			<li><a href="/experience.html">Experience</a></li>
-			<li><a href="/projects.html">Projects</a></li>
-			<li><a href="/education.html">Education</a></li>
-			<li><a href="/contact.html">Contact</a></li>
+			<li><a href={getLink("/about")}>About</a></li>
+			<li><a href={getLink("/experience")}>Experience</a></li>
+			<li><a href={getLink("/projects")}>Projects</a></li>
+			<li><a href={getLink("/education")}>Education</a></li>
+			<li><a href={getLink("/contact")}>Contact</a></li>
 		</ul>
 	</div>
 </nav>
