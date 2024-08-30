@@ -1,9 +1,7 @@
-name: Deploy Svelte Site
+name: Deploy Site
 
 on:
  push:
-  branches:
-   - main
   tags:
    - v*.*.*
  workflow_dispatch:
