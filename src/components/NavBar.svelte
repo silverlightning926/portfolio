@@ -21,11 +21,11 @@
 		</button>
 		<ul class="navbar-menu" id="navbar-menu" class:show={isMenuOpen}>
 			<li><a href="/">Home</a></li>
-			<li><a href="/about">About</a></li>
-			<li><a href="/experience">Experience</a></li>
-			<li><a href="/projects">Projects</a></li>
-			<li><a href="/education">Education</a></li>
-			<li><a href="/contact">Contact</a></li>
+			<li><a href="/about.html">About</a></li>
+			<li><a href="/experience.html">Experience</a></li>
+			<li><a href="/projects.html">Projects</a></li>
+			<li><a href="/education.html">Education</a></li>
+			<li><a href="/contact.html">Contact</a></li>
 		</ul>
 	</div>
 </nav>
