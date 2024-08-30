@@ -46,3 +46,11 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
      run: |
       aws s3 sync build/ ${{ secrets.PORTFOLIO_HOSTING_S3_LINK }} --delete
+
+   - name: Invalidate CloudFront Cache
+     env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+     run: |
+      aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
