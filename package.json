@@ -12,7 +12,7 @@
 		"format:check": "prettier --check src/**/*.ts"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^3.0.4",
+		"@sveltejs/adapter-cloudflare": "^4.7.2",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/node": "^22.5.0",
