@@ -14,7 +14,7 @@ const config = {
 			strict: true,
 		}),
 		paths: {
-			base: "/sveltekit-github-pages",
+			base: process.argv.includes("dev") ? "" : "/build",
 		},
 	},
 };
