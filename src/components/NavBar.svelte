@@ -9,7 +9,7 @@
 	}
 
 	function getLink(path: string) {
-		return `${base}${path}`;
+		return !building ? `${base}${path}` : `${base}${path}.html`;
 	}
 </script>
 
