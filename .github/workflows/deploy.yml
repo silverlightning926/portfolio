@@ -41,6 +41,8 @@ jobs:
       aws s3 cp ${{ secrets.PORTFOLIO_DATA_S3_LINK }} src/lib --recursive
 
    - name: Build the site
+     env:
+      BASE_PATH: "/${{ github.event.repository.name }}"
      run: npm run build
 
    - name: Setup Pages
@@ -61,7 +63,6 @@ jobs:
    url: ${{ steps.deployment.outputs.page_url }}
 
   permissions:
-   contents: read
    pages: write
    id-token: write
 
