@@ -14,7 +14,7 @@ const config = {
 			strict: true,
 		}),
 		paths: {
-			base: process.argv.includes("dev") ? "" : "/build",
+			base: process.argv.includes("dev") ? "" : "/portfolio",
 		},
 	},
 };
