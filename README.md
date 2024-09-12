@@ -3,7 +3,7 @@
 *<div style="color:gray;margin-top:-10px;">By Siddharth Rao</div>*
 
 ---
-![Svelte](https://img.shields.io/badge/Svelte-%23FF3E00.svg?style=flat&logo=svelte&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-%2306B6D4.svg?style=flat&logo=tailwindcss&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat&logo=amazon-web-services&logoColor=white)
+![Svelte](https://img.shields.io/badge/Svelte-%23FF3E00.svg?style=flat&logo=svelte&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-%2306B6D4.svg?style=flat&logo=tailwindcss&logoColor=white) ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-%23222222.svg?style=flat&logo=amazon-web-services&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat&logo=amazon-web-services&logoColor=white)
 
 ---
 
@@ -30,11 +30,11 @@
 
 ## Link
 
-[siddharthrao.info](https://siddharthrao.info)
+[siddharthrao.info](https://www.siddharthrao.info)
 
 ## About
 
-This is my personal portfolio website. It is built using Svelte and Tailwind CSS. The website is hosted on AWS S3 and CloudFront.
+This is my personal portfolio website. It is built using Svelte and Tailwind CSS. The website is being hosted by Github Pages and is being routed too by AWS Route53.
 
 The website is automatically deployed using GitHub Actions. The website is automatically formatted using Prettier.
 
