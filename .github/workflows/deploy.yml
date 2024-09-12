@@ -50,9 +50,8 @@ jobs:
      uses: actions/configure-pages@v5
 
    - name: Upload a Build Artifact
-     uses: actions/upload-artifact@v4
+     uses: actions/upload-pages-artifact@v3.0.1
      with:
-      name: github-pages
       path: "build/"
 
  deploy:
