@@ -9,7 +9,7 @@ const config = {
 		adapter: adapter({
 			pages: "build",
 			assets: "build",
-			fallback: "404.html",
+			fallback: `${process.argv.includes("dev") ? "" : process.env.BASE_PATH}/404.html`,
 			precompress: false,
 			strict: true,
 		}),
