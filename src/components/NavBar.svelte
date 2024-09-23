@@ -7,10 +7,6 @@
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
 	}
-
-	function getLink(path: string) {
-		return !building ? `${base}${path}` : `${base}${path}.html`;
-	}
 </script>
 
 <nav class="navbar">
@@ -28,11 +24,11 @@
 		</button>
 		<ul class="navbar-menu" id="navbar-menu" class:show={isMenuOpen}>
 			<li><a href={base + "/"}>Home</a></li>
-			<li><a href={getLink("/about")}>About</a></li>
-			<li><a href={getLink("/experience")}>Experience</a></li>
-			<li><a href={getLink("/projects")}>Projects</a></li>
-			<li><a href={getLink("/education")}>Education</a></li>
-			<li><a href={getLink("/contact")}>Contact</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/experience">Experience</a></li>
+			<li><a href="/projects">Projects</a></li>
+			<li><a href="/education">Education</a></li>
+			<li><a href="/contact">Contact</a></li>
 		</ul>
 	</div>
 </nav>
