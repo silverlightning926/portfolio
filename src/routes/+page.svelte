@@ -11,26 +11,28 @@
 
 <Layout>
 	<main class="landing-page px-4">
-		<h1 class="text-5xl sm:text-4xl md:text-5xl lg:text-5xl">
+		<h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-5xl">
 			Hello! My Name is
 		</h1>
 		<h3
-			class="mt-6 text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold tracking-wide title"
+			class="mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold tracking-wide title"
 		>
 			{contactInfo.name}
 		</h3>
-		<p class="text-2xl sm:text-3xl md:text-4xl mt-12">
+		<p class="text-xl sm:text-2xl md:text-4xl mt-8">
 			<span class="highlighted-text">{contactInfo.title.split(" ")[0]}</span
 			>{contactInfo.title.split(" ").slice(1).join(" ")}
 		</p>
-		<p class="text-lg sm:text-xl md:text-2xl mt-8 flex justify-center">
+		<p
+			class="text-lg sm:text-xl md:text-2xl mt-6 flex justify-center text-center"
+		>
 			Full Stack, Robotics, Machine Learning, and More
 			<span class="blinking-cursor">_</span>
 		</p>
-		<div class="mt-12 flex flex-col gap-4 items-center sm:flex-row sm:gap-6">
+		<div class="mt-10 flex flex-col gap-4 items-center sm:flex-row sm:gap-6">
 			<ResumeButton href={resumePDF} text="Resume" />
 		</div>
-		<div class="flex flex-col gap-6 mt-12 items-center sm:flex-row sm:gap-12">
+		<div class="flex flex-col gap-6 mt-10 items-center sm:flex-row sm:gap-12">
 			<SocialIcon
 				link="mailto:{contactInfo.email}"
 				icon="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"
@@ -49,23 +51,25 @@
 
 <style>
 	.landing-page {
-		padding: 6rem 1rem;
+		padding: 4rem 1rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		min-height: 100vh;
 	}
+
 	.title {
 		color: white;
 		text-shadow:
 			0 0 2px white,
 			0 0 4px white;
 	}
+
 	.blinking-cursor {
 		position: relative;
 		font-weight: bold;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		color: white;
 		text-shadow:
 			0 0 2px white,
@@ -82,15 +86,9 @@
 		padding: 0.25rem 0.5rem;
 		filter: drop-shadow(0 0 20px blue);
 		margin-right: 1.125rem;
-	}
-
-	@keyframes spin {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
+		text-shadow:
+			0 0 2px white,
+			0 0 4px white;
 	}
 
 	@keyframes blink {
@@ -100,6 +98,28 @@
 		}
 		50% {
 			visibility: visible;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.landing-page {
+			padding: 2rem 1rem;
+		}
+
+		h1 {
+			font-size: 3rem;
+		}
+
+		h3 {
+			font-size: 3.5rem;
+		}
+
+		p {
+			font-size: 1.25rem;
+		}
+
+		.blinking-cursor {
+			font-size: 1rem;
 		}
 	}
 </style>
